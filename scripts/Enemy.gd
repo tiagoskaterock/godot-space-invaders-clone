@@ -1,10 +1,24 @@
 extends Area2D
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+export (int, "A", "B", "C") var type = 0
 
+var attributes = [
+	{
+		'texture': preload("res://sprites/InvaderA_sheet.png"),
+		'score': 10
+	},
+	{
+		'texture': preload("res://sprites/InvaderB_sheet.png"),
+		'score': 20
+	},
+	{
+		'texture': preload("res://sprites/InvaderC_sheet.png"),
+		'score': 30
+	},
+]
+	
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
+	get_node("Sprite").set_texture(attributes[type].texture)
+	var score = attributes[type].score
+	print(score)
 	pass
