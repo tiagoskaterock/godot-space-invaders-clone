@@ -9,16 +9,20 @@ func _ready():
 	
 func _process(delta):
 	check_movement(delta)
+	check_shoot()
 	
-	if Input.is_action_pressed("shoot") and ! prev_laser:		
+func check_shoot():
+	var shoot = Input.is_action_pressed("shoot")	
+	if shoot and ! prev_laser and ! has_shoot_in_scene():		
 		var shoot = prev_shoot.instance()
 		get_parent().add_child(shoot)
 		shoot.set_global_pos(get_global_pos())
-		print(shoot.get_global_pos().y)
-	
-	prev_laser = Input.is_action_pressed("shoot")
-		
 
+	prev_laser = Input.is_action_pressed("shoot")
+	
+func has_shoot_in_scene():
+	return get_tree().get_nodes_in_group("ship_shoot_group").size() != 0
+	
 func check_movement(delta):
 	var dir = 0
 	if Input.is_action_pressed("go_right") and get_global_pos().x < 173: 
