@@ -20,5 +20,3 @@ var attributes = [
 func _ready():
 	get_node("Sprite").set_texture(attributes[type].texture)
 	var score = attributes[type].score
-	print(score)
-	pass
