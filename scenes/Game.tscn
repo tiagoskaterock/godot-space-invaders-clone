@@ -15,11 +15,11 @@ transform/pos = Vector2( 90, 288 )
 [node name="Enemy" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 39.7931, 40.7143 )
+type = 1
 
 [node name="Enemy 2" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 86.1041, 39.2441 )
-type = 1
 
 [node name="Enemy 3" parent="." instance=ExtResource( 3 )]
 
