@@ -3,6 +3,8 @@ extends Area2D
 const SPEED = 100
 var prev_shoot = preload("res://scenes/Shoot.tscn")
 var prev_laser = false
+const is_player = true
+var lives = 3
 
 func _ready():
 	set_process(true)
@@ -30,4 +32,13 @@ func check_movement(delta):
 	if Input.is_action_pressed("go_left") and get_global_pos().x > 7: 
 		dir -= 1 
 	translate(Vector2(1, 0) * SPEED * dir * delta)
+	
+func die():
+	loseLife()
+	print(lives)
+	print('DIE')
+	
+func loseLife():
+	lives -= 1
+	queue_free()	
 	

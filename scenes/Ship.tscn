@@ -40,7 +40,6 @@ points = Vector2Array( 0.567839, -3.06122, -0.541011, -3.0571, -0.511837, -4.031
 
 [node name="Ship" type="Area2D"]
 
-editor/display_folded = true
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -67,6 +66,7 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+collision/mask = 8
 script/script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
