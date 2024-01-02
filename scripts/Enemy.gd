@@ -29,3 +29,8 @@ func setType(val):
 	type = val
 	if is_inside_tree() and get_tree().is_editor_hint():
 		update()
+
+func _on_Enemy_area_enter( area ):
+	if area.is_shoot: 
+		area.queue_free()
+		queue_free()
