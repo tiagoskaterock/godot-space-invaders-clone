@@ -12,18 +12,120 @@ script/script = ExtResource( 1 )
 
 transform/pos = Vector2( 90, 288 )
 
-[node name="Enemy" parent="." instance=ExtResource( 3 )]
+[node name="AlienGroup" type="Node2D" parent="."]
 
-transform/pos = Vector2( 39.7931, 40.7143 )
+transform/pos = Vector2( 8, 35 )
+
+[node name="Enemy 2" parent="AlienGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 56, 9 )
+
+[node name="Enemy3" parent="AlienGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 40, 9 )
+
+[node name="Enemy 3" parent="AlienGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 72, 9 )
+
+[node name="Enemy4" parent="AlienGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 88, 9 )
+
+[node name="Enemy5" parent="AlienGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 104, 9 )
+
+[node name="Enemy6" parent="AlienGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 120, 9 )
+
+[node name="Enemy7" parent="AlienGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 136, 9 )
+
+[node name="Enemy9" parent="AlienGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 24, 9 )
+
+[node name="Enemy10" parent="AlienGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 24, 21 )
 type = 1
 
-[node name="Enemy 2" parent="." instance=ExtResource( 3 )]
+[node name="Enemy11" parent="AlienGroup" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 86.1041, 39.2441 )
+transform/pos = Vector2( 40, 21 )
+type = 1
 
-[node name="Enemy 3" parent="." instance=ExtResource( 3 )]
+[node name="Enemy12" parent="AlienGroup" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 129.475, 60.5619 )
+transform/pos = Vector2( 56, 21 )
+type = 1
+
+[node name="Enemy13" parent="AlienGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 72, 21 )
+type = 1
+
+[node name="Enemy14" parent="AlienGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 88, 21 )
+type = 1
+
+[node name="Enemy15" parent="AlienGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 104, 21 )
+type = 1
+
+[node name="Enemy16" parent="AlienGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 120, 21 )
+type = 1
+
+[node name="Enemy17" parent="AlienGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 136, 21 )
+type = 1
+
+[node name="Enemy18" parent="AlienGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 24, 33 )
+type = 2
+
+[node name="Enemy19" parent="AlienGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 40, 33 )
+type = 2
+
+[node name="Enemy20" parent="AlienGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 56, 33 )
+type = 2
+
+[node name="Enemy21" parent="AlienGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 72, 33 )
+type = 2
+
+[node name="Enemy22" parent="AlienGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 88, 33 )
+type = 2
+
+[node name="Enemy23" parent="AlienGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 104, 33 )
+type = 2
+
+[node name="Enemy24" parent="AlienGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 120, 33 )
+type = 2
+
+[node name="Enemy25" parent="AlienGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 136, 33 )
 type = 2
 
 
