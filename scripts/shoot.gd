@@ -2,6 +2,7 @@ extends Area2D
 
 const SPEED = 380
 const is_shoot = true
+const is_player = false
 
 func _ready():
 	add_to_group("ship_shoot_group")

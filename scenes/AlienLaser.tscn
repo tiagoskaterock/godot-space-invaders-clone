@@ -5,11 +5,11 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 0.540332, 2.52706 )
+extents = Vector2( 3.89379, 3.90594 )
 
 [sub_resource type="GDScript" id=2]
 
-script/source = "extends Area2D\n\nconst SPEED = 200\nconst is_shoot = true\n\nfunc _ready():\n\tset_process(true)\n\t\nfunc _process(delta):\n\ttranslate(Vector2(0, 1) * SPEED * delta)\n\tif get_global_pos().y > 400: queue_free()\t\n\nfunc _on_AlienLaser_area_enter( area ):\n\tif area.is_player: \n\t\tarea.die()\n\t\tqueue_free()\n\t\t\n"
+script/source = "extends Area2D\n\nconst SPEED = 100\nconst is_shoot = true\n\nfunc _ready():\n\tset_process(true)\n\t\nfunc _process(delta):\n\ttranslate(Vector2(0, 1) * SPEED * delta)\n\tif get_global_pos().y > 400: queue_free()\t\n\nfunc _on_AlienLaser_area_enter( area ):\n\tprint(area.get_name())\n\tif area.is_player: \n\t\tarea.die()\n\t\tqueue_free()\n\telse:\n\t\tarea.queue_free()\n\t\tqueue_free()\n\t\t\n"
 
 [sub_resource type="Animation" id=3]
 
@@ -44,13 +44,13 @@ gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 collision/layers = 8
+collision/mask = 3
 script/script = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 
 texture = ExtResource( 1 )
 hframes = 2
-frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
