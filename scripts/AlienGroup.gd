@@ -3,8 +3,8 @@ extends Node2D
 var pre_alien_laser = preload('res://scenes/AlienLaser.tscn')
 var dir = -1
 var y_speed = 3
-var x_speed = 2
-var x_constant = 3
+var x_speed = 5
+var x_constant = 1
 
 func _ready():
 	pass
@@ -34,16 +34,19 @@ func _on_TimerToMove_timeout():
 	if total_aliens == 4: x_speed = 9 * x_constant
 	if total_aliens == 3: x_speed = 10 * x_constant
 	if total_aliens == 2: x_speed = 11 * x_constant
-	if total_aliens == 1: x_speed = 12 * x_constant
-	
+	if total_aliens == 1: x_speed = 12 * x_constant	
 	moveGroup()
 	
 func moveGroup():
 	for alien in get_node("Aliens").get_children():
-		if alien.get_global_pos().x > 170:
+		alien.nextFrame()
+		if alien.get_global_pos().x > 170:			
 			translate(Vector2(0, y_speed))
 			dir = -1
 		elif alien.get_global_pos().x < 12:
 			translate(Vector2(0, y_speed))
 			dir = 1
 	translate(Vector2(x_speed * dir, 0))
+	
+
+	

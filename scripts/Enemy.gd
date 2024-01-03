@@ -1,5 +1,6 @@
 tool
 extends Area2D
+var frame = 0
 
 export (int, "A", "B", "C") var type = 0 setget setType
 
@@ -34,3 +35,8 @@ func _on_Enemy_area_enter( area ):
 	if area.is_shoot: 
 		area.queue_free()
 		queue_free()
+		
+func nextFrame():	
+	if frame == 0: frame = 1
+	else: frame = 0
+	get_node("Sprite").set_frame(frame)
