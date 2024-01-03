@@ -14,4 +14,13 @@ transform/pos = Vector2( 90, 288 )
 
 [node name="AlienGroup" parent="." instance=ExtResource( 3 )]
 
+[node name="TimerToMove" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 0.2
+one_shot = false
+autostart = true
+
+[connection signal="timeout" from="TimerToMove" to="AlienGroup" method="_on_TimerToMove_timeout"]
+
 
