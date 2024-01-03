@@ -5,6 +5,7 @@ var dir = -1
 var y_speed = 3
 var x_speed = 5
 var x_constant = 1
+var maxIntervalToShoot = 1
 
 func _ready():
 	pass
@@ -18,12 +19,11 @@ func shoot():
 		get_parent().add_child(laser)
 
 func _on_TimerToShoot_timeout():
-	get_node("TimerToShoot").set_wait_time(rand_range(.5, 5))
+	get_node("TimerToShoot").set_wait_time(rand_range(.5, maxIntervalToShoot))
 	shoot()
 
 func _on_TimerToMove_timeout():	
 	var total_aliens = get_node("Aliens").get_child_count()
-	print(total_aliens)	
 	if total_aliens == 20: x_speed = 3 * x_constant
 	if total_aliens == 15: x_speed = 4 * x_constant
 	if total_aliens == 11: x_speed = 4 * x_constant

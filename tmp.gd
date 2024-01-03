@@ -12,10 +12,8 @@ func _process(delta):
 
 func _on_AlienLaser_area_enter( area ):
 	print(area.get_name())
-	if area.is_player: 
+	if area.is_player:
 		area.die()
 		queue_free()
 	else:
-		area.queue_free()
-		queue_free()
-		
+		print('bosta')

@@ -35,8 +35,8 @@ func check_movement(delta):
 	
 func die():
 	loseLife()
-	print(lives)
-	print('DIE')
+	print("Lives:" + str(lives))
+	print('PLAYER DIES')
 	
 func loseLife():
 	lives -= 1

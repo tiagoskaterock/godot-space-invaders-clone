@@ -10,10 +10,6 @@ script/script = ExtResource( 1 )
 
 [node name="Aliens" type="Node2D" parent="."]
 
-[node name="Enemy 2" parent="Aliens" instance=ExtResource( 2 )]
-
-transform/pos = Vector2( 56, 9 )
-
 [node name="Enemy3" parent="Aliens" instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 40, 9 )

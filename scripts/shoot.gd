@@ -3,6 +3,7 @@ extends Area2D
 const SPEED = 380
 const is_shoot = true
 const is_player = false
+var is_shield = false
 
 func _ready():
 	add_to_group("ship_shoot_group")
@@ -12,6 +13,4 @@ func _process(delta):
 	translate(Vector2(0, -1) * SPEED * delta)
 	
 	if	get_global_pos().y < 0: queue_free()
-	
-
 	
