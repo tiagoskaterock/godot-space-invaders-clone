@@ -2,8 +2,8 @@ extends Node
 
 var _score = 0
 const preMotherShip = preload("res://scenes/MotherShip.tscn")
-const maxToRespawnMothership = 5
-const minToRespanMothership = 1
+const maxToRespawnMothership = 30
+const minToRespanMothership = 20
 
 func _process(delta):	
 	return
@@ -40,4 +40,4 @@ func getScore():
 	return _score
 	
 func updateScoreOnScreen():
-	get_node("HUD").update(str(getScore()))
+	get_node("HUD").updateScore(str(getScore()))

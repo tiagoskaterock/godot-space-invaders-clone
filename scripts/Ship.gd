@@ -35,10 +35,15 @@ func check_movement(delta):
 	
 func die():
 	loseLife()
-	print("Lives:" + str(lives))
-	print('PLAYER DIES')
 	
 func loseLife():
-	lives -= 1
-	queue_free()	
+	setLives(getLives() - 1)	
+	var hud = get_parent().get_node("HUD")
+	hud.updateLives(getLives())
+	
+func getLives():
+	return lives
+	
+func setLives(newLives):
+	lives = newLives
 	
