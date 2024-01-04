@@ -5,7 +5,7 @@ var dir = -1
 var y_speed = 3
 var x_speed = 5
 var x_constant = 1
-var maxIntervalToShoot = 1
+var maxIntervalToShoot = 5
 
 func _ready():
 	pass
