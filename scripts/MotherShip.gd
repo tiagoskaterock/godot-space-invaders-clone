@@ -4,20 +4,26 @@ const is_player = false
 const is_shield = false
 const is_shoot = true
 const _score = 500
-const SPEED = 25
+const SPEED = 50
 const pre_alien_explosion = preload("res://scenes/AlienExplosion.tscn")
 
 func _ready():
 	set_process(true)
 
 func _process(delta):
+	if get_pos().x < -20:
+		queue_free()		
+		restart()
 	move(delta)
+	
+func restart():
+	var game = get_parent()
+	game.startTimerToMotherShip()
 
 func _on_MotherShip_area_enter( area ):
-	print(area)
 	if area.is_shoot:
 		die(area)
-		
+
 func die(area):
 	var game = get_parent()	
 	game.setScore(game.getScore() + getScore())
@@ -27,12 +33,10 @@ func die(area):
 	var transparente = Color(1,1,1,0)
 	get_node("Sprite").modulate = transparente
 	add_child(alien_explosion)
-
+	restart()
+	
 func getScore():
 	return _score
-	
+
 func move(delta):
-	print(delta)
 	set_pos(Vector2(get_pos().x - (SPEED * delta), get_pos().y))
-#	translate(Vector2(100, get_pos().y))
-	
