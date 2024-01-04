@@ -10,8 +10,7 @@ func _ready():
 	
 func setScore(newScore):
 	_score = newScore
-	updateScoreOnScreen()
-	print('NEW SCORE: ' + str(getScore()))
+	updateScoreOnScreen()	
 	
 func getScore():
 	return _score
