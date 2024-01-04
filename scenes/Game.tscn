@@ -44,7 +44,7 @@ transform/pos = Vector2( 112, 272 )
 
 [node name="MotherShip" parent="." instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 87.2222, 142.716 )
+transform/pos = Vector2( 122, 122 )
 
 [connection signal="timeout" from="TimerToMove" to="AlienGroup" method="_on_TimerToMove_timeout"]
 

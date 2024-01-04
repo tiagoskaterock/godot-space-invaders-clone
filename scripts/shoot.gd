@@ -10,7 +10,6 @@ func _ready():
 	set_process(true)
 	
 func _process(delta):
-	translate(Vector2(0, -1) * SPEED * delta)
-	
+	translate(Vector2(0, -1) * SPEED * delta)	
 	if	get_global_pos().y < 0: queue_free()
 	
