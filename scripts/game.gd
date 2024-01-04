@@ -8,9 +8,13 @@ func _ready():
 	var window_position = (screen_size - window_size) / 2
 	OS.set_window_position(window_position)
 	
-func setScore(newScore):	
+func setScore(newScore):
 	_score = newScore
+	updateScoreOnScreen()
 	print('NEW SCORE: ' + str(getScore()))
 	
 func getScore():
 	return _score
+	
+func updateScoreOnScreen():
+	get_node("HUD").update(str(getScore()))

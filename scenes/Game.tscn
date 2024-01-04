@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://scripts/game.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Ship.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/AlienGroup.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Shield.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=5]
 
 [node name="Game" type="Node"]
 
@@ -37,6 +38,8 @@ transform/pos = Vector2( 62, 272 )
 [node name="Shield3" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 112, 272 )
+
+[node name="HUD" parent="." instance=ExtResource( 5 )]
 
 [connection signal="timeout" from="TimerToMove" to="AlienGroup" method="_on_TimerToMove_timeout"]
 
