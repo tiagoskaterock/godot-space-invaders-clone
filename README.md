@@ -49,5 +49,5 @@ Se tiver perguntas sobre a navegação no espaço ou se quiser compartilhar suas
 Vamos embarcar nesta aventura espacial rumo aos anos 70! Pegue sua nave e junte-se à diversão intergaláctica! 🚀🌌🕹️
 
 <p align="center">
-    <img src="1.png" alt="Space Invaders" />
+    <img src="1.gif" alt="Space Invaders" />
 </p>
