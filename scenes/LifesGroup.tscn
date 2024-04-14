@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://sprites/Ship-sheet.png" type="Texture" id=1]
+
+[node name="LifesGroup" type="Node"]
+
+editor/display_folded = true
+
+[node name="01" type="Sprite" parent="."]
+
+transform/pos = Vector2( 67, 304 )
+texture = ExtResource( 1 )
+hframes = 3
+
+[node name="02" type="Sprite" parent="."]
+
+transform/pos = Vector2( 87, 304 )
+texture = ExtResource( 1 )
+hframes = 3
+
+[node name="03" type="Sprite" parent="."]
+
+transform/pos = Vector2( 107, 304 )
+texture = ExtResource( 1 )
+hframes = 3
+
+
