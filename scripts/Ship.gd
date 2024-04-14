@@ -24,10 +24,11 @@ func _process(delta):
 	
 func check_shoot():
 	var shoot = Input.is_action_pressed("shoot")	
-	if shoot and ! prev_laser and ! has_shoot_in_scene():		
+	if shoot and ! prev_laser and ! has_shoot_in_scene():
 		var shoot = prev_shoot.instance()
 		get_parent().add_child(shoot)
 		shoot.set_global_pos(get_global_pos())
+		get_node("SFX").play("ship_shoot")
 
 	prev_laser = Input.is_action_pressed("shoot")
 	
@@ -47,6 +48,7 @@ func die():
 	loseLife()
 	
 func explode():
+	get_node("SFX").play("ship_explosion")
 	exploding = true
 	get_node("TimerExploding").start()
 	get_node("Animation").play("explode")

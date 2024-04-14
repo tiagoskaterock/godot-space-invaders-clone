@@ -14,6 +14,7 @@ func _ready():
 		alien.hide()
 	
 func shoot():
+	get_node("SFX").play("ship_shoot")
 	var total_aliens = get_node("Aliens").get_child_count()
 	if total_aliens > 0:		
 		var rand_alien = get_node("Aliens").get_child(randi() % total_aliens)		
@@ -92,7 +93,7 @@ func moveGroup():
 func playSFXmove():
 	var total_aliens = get_node("Aliens").get_child_count()
 	if total_aliens > 0:
-		get_node("SFXmove").play(str(note))
+		get_node("SFX").play(str(note))
 		note = note + 1
 		if note > 4: note = 1
 	

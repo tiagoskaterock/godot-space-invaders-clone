@@ -42,6 +42,7 @@ func nextFrame():
 	get_node("Sprite").set_frame(frame)
 	
 func die(area):
+	get_node("SFX").play("alien_explosion")
 	var game = get_parent().get_parent().get_parent()
 	var score = self.attributes[type].score
 	game.setScore(game.getScore() + score)

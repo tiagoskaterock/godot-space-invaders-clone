@@ -1,7 +1,9 @@
-[gd_scene load_steps=12 format=1]
+[gd_scene load_steps=15 format=1]
 
 [ext_resource path="res://scripts/Ship.gd" type="Script" id=1]
 [ext_resource path="res://sprites/Ship-sheet.png" type="Texture" id=2]
+[ext_resource path="res://sfx/ship_explosion.smp" type="Sample" id=3]
+[ext_resource path="res://sfx/ship_shoot.smp" type="Sample" id=4]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -62,9 +64,13 @@ tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = { "times":FloatArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ), "update":1, "values":[ 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2 ] }
 
+[sub_resource type="SampleLibrary" id=10]
+
+samples/ship_explosion = { "db":0.0, "pitch":1.0, "sample":ExtResource( 3 ) }
+samples/ship_shoot = { "db":0.0, "pitch":1.0, "sample":ExtResource( 4 ) }
+
 [node name="Ship" type="Area2D"]
 
-editor/display_folded = true
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -125,6 +131,23 @@ process_mode = 1
 wait_time = 1.5
 one_shot = false
 autostart = false
+
+[node name="SFX" type="SamplePlayer" parent="."]
+
+config/polyphony = 1
+config/samples = SubResource( 10 )
+default/volume_db = 0.0
+default/pitch_scale = 1.0
+default/pan = 0.0
+default/depth = 0.0
+default/height = 0.0
+default/filter/type = 0
+default/filter/cutoff = 5000.0
+default/filter/resonance = 1.0
+default/filter/gain = 1.0
+default/reverb_room = 2
+default/reverb_send = 0.0
+default/chorus_send = 0.0
 
 [connection signal="timeout" from="TimerExploding" to="." method="_on_TimerExploding_timeout"]
 

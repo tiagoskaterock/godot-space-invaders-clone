@@ -1,12 +1,19 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://scripts/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://sprites/InvaderA_sheet.png" type="Texture" id=2]
+[ext_resource path="res://sfx/alien_explosion.smp" type="Sample" id=3]
+[ext_resource path="res://sfx/alien_shot.smp" type="Sample" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 6, 4 )
+
+[sub_resource type="SampleLibrary" id=2]
+
+samples/alien_explosion = { "db":0.0, "pitch":1.0, "sample":ExtResource( 3 ) }
+samples/alien_shot = { "db":0.0, "pitch":1.0, "sample":ExtResource( 4 ) }
 
 [node name="Enemy" type="Area2D"]
 
@@ -35,6 +42,23 @@ frame = 1
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
+
+[node name="SFX" type="SamplePlayer" parent="."]
+
+config/polyphony = 1
+config/samples = SubResource( 2 )
+default/volume_db = 0.0
+default/pitch_scale = 1.0
+default/pan = 0.0
+default/depth = 0.0
+default/height = 0.0
+default/filter/type = 0
+default/filter/cutoff = 5000.0
+default/filter/resonance = 1.0
+default/filter/gain = 1.0
+default/reverb_room = 2
+default/reverb_send = 0.0
+default/chorus_send = 0.0
 
 [connection signal="area_enter" from="." to="." method="_on_Enemy_area_enter"]
 
