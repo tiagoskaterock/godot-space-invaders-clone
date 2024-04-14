@@ -5,6 +5,7 @@
 
 [node name="AlienGroup" type="Node2D"]
 
+editor/display_folded = true
 transform/pos = Vector2( 8, 35 )
 script/script = ExtResource( 1 )
 
