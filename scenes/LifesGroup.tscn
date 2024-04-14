@@ -8,19 +8,19 @@ editor/display_folded = true
 
 [node name="01" type="Sprite" parent="."]
 
-transform/pos = Vector2( 67, 304 )
+transform/pos = Vector2( 14, 14 )
 texture = ExtResource( 1 )
 hframes = 3
 
 [node name="02" type="Sprite" parent="."]
 
-transform/pos = Vector2( 87, 304 )
+transform/pos = Vector2( 34, 14 )
 texture = ExtResource( 1 )
 hframes = 3
 
 [node name="03" type="Sprite" parent="."]
 
-transform/pos = Vector2( 107, 304 )
+transform/pos = Vector2( 54, 14 )
 texture = ExtResource( 1 )
 hframes = 3
 

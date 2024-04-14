@@ -6,11 +6,13 @@ var y_speed = 3
 var x_speed = 5
 var x_constant = 1
 var maxIntervalToShoot = 5
+var moving_group = false
 
 func _ready():
-	pass
+	for alien in get_node("Aliens").get_children():
+		alien.hide()
 	
-func shoot():	
+func shoot():
 	var total_aliens = get_node("Aliens").get_child_count()
 	if total_aliens > 0:		
 		var rand_alien = get_node("Aliens").get_child(randi() % total_aliens)		
@@ -19,8 +21,9 @@ func shoot():
 		get_parent().add_child(laser)
 
 func _on_TimerToShoot_timeout():
-	get_node("TimerToShoot").set_wait_time(rand_range(.5, maxIntervalToShoot))
-	shoot()
+	if moving_group:
+		get_node("TimerToShoot").set_wait_time(rand_range(.5, maxIntervalToShoot))
+		shoot()
 
 func _on_TimerToMove_timeout():	
 	var total_aliens = get_node("Aliens").get_child_count()
@@ -38,15 +41,26 @@ func _on_TimerToMove_timeout():
 	moveGroup()
 	
 func moveGroup():
-	for alien in get_node("Aliens").get_children():
-		alien.nextFrame()
-		if alien.get_global_pos().x > 170:			
-			translate(Vector2(0, y_speed))
-			dir = -1
-		elif alien.get_global_pos().x < 12:
-			translate(Vector2(0, y_speed))
-			dir = 1
-	translate(Vector2(x_speed * dir, 0))
+	# after the intro 
+	if moving_group:
+		for alien in get_node("Aliens").get_children():
+			# alien.hide()
+			alien.nextFrame()
+			if alien.get_global_pos().x > 170:			
+				translate(Vector2(0, y_speed))
+				dir = -1
+			elif alien.get_global_pos().x < 12:
+				translate(Vector2(0, y_speed))
+				dir = 1
+		translate(Vector2(x_speed * dir, 0))
 	
+	# start when the group is not moving but showing aliens,  1 by 1
+	if ! moving_group:
+		for alien in get_node("Aliens").get_children():
+			get_node("TimerPause").start()
+			yield(get_node("TimerPause"), "timeout")
+			alien.show()
+		moving_group = true      
 
+	
 	

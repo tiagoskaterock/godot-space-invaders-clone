@@ -10,9 +10,17 @@ script/script = ExtResource( 1 )
 
 [node name="Aliens" type="Node2D" parent="."]
 
+[node name="Enemy9" parent="Aliens" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 23.9579, 9.25427 )
+
 [node name="Enemy3" parent="Aliens" instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 40, 9 )
+
+[node name="Enemy8" parent="Aliens" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 56, 9 )
 
 [node name="Enemy 3" parent="Aliens" instance=ExtResource( 2 )]
 
@@ -33,10 +41,6 @@ transform/pos = Vector2( 120, 9 )
 [node name="Enemy7" parent="Aliens" instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 136, 9 )
-
-[node name="Enemy9" parent="Aliens" instance=ExtResource( 2 )]
-
-transform/pos = Vector2( 24, 9 )
 
 [node name="Enemy10" parent="Aliens" instance=ExtResource( 2 )]
 
@@ -124,6 +128,13 @@ process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = true
+
+[node name="TimerPause" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 0.05
+one_shot = true
+autostart = false
 
 [connection signal="timeout" from="TimerToShoot" to="." method="_on_TimerToShoot_timeout"]
 

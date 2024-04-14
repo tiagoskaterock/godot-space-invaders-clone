@@ -1,3 +1,4 @@
+# Ship Script
 extends Area2D
 
 const SPEED = 100
@@ -10,8 +11,11 @@ func _ready():
 	set_process(true)
 	
 func _process(delta):
-	check_movement(delta)
-	check_shoot()
+	# check to see if all aliens are shown before the Ship can shoot
+	var moving_group = get_parent().get_node("AlienGroup").moving_group
+	if(moving_group):
+		check_movement(delta)
+		check_shoot()
 	
 func check_shoot():
 	var shoot = Input.is_action_pressed("shoot")	
