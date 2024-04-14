@@ -62,7 +62,6 @@ func getLives():
 func setLives(newLives):
 	lives = newLives
 	
-
 func _on_TimerExploding_timeout():
 	exploding = false
 	get_node("Animation").play("default")

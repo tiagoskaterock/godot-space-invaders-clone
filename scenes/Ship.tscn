@@ -64,6 +64,7 @@ tracks/0/keys = { "times":FloatArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8,
 
 [node name="Ship" type="Area2D"]
 
+editor/display_folded = true
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
