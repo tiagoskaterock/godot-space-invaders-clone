@@ -8,6 +8,7 @@ const SPEED = 50
 const pre_alien_explosion = preload("res://scenes/AlienExplosion.tscn")
 
 func _ready():
+	get_node("CollisionPolygon2D").queue_free()
 	get_node("SFX").play("sfx");
 	set_process(true)
 
@@ -26,6 +27,9 @@ func _on_MotherShip_area_enter( area ):
 		die(area)
 
 func die(area):
+	# tira o colisor quando morre
+	print(get_node("CollisionPolygon2D"))
+	
 	get_node("SFX").play("alien_explosion")
 	var game = get_parent()	
 	game.setScore(game.getScore() + getScore())

@@ -34,8 +34,8 @@ func setType(val):
 
 func _on_Enemy_area_enter( area ):
 	if area.is_shoot:
-		var shape = get_node("CollisionShape2D")
-		shape.queue_free()
+		# remove o colisor 2D quando atingido		
+		get_node("CollisionShape2D").queue_free()
 		die(area);
 		
 func nextFrame():
