@@ -7,6 +7,7 @@ var prev_laser = false
 const is_player = true
 var lives = 3
 var exploding = false
+var infinite_shoot = true #for testing purposes
 
 func _ready():
 	get_node("Animation").play("default")
@@ -33,6 +34,7 @@ func check_shoot():
 	prev_laser = Input.is_action_pressed("shoot")
 	
 func has_shoot_in_scene():
+	if infinite_shoot: return false;
 	return get_tree().get_nodes_in_group("ship_shoot_group").size() != 0
 	
 func check_movement(delta):
@@ -54,13 +56,13 @@ func explode():
 	get_node("Animation").play("explode")
 	
 func loseLife():
-	setLives(getLives() - 1)	
+	setLives(getLives() - 1)
 	var hud = get_parent().get_node("HUD")
 	hud.updateLives(getLives())
 	
 func getLives():
 	return lives
-	
+
 func setLives(newLives):
 	lives = newLives
 	

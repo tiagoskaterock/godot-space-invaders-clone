@@ -26,6 +26,7 @@ func _on_MotherShip_area_enter( area ):
 		die(area)
 
 func die(area):
+	get_node("SFX").play("alien_explosion")
 	var game = get_parent()	
 	game.setScore(game.getScore() + getScore())
 	area.queue_free() #some laser

@@ -33,15 +33,17 @@ func setType(val):
 		update()
 
 func _on_Enemy_area_enter( area ):
-	if area.is_shoot: 
+	if area.is_shoot:
+		var shape = get_node("CollisionShape2D")
+		shape.queue_free()
 		die(area);
 		
-func nextFrame():	
+func nextFrame():
 	if frame == 0: frame = 1
 	else: frame = 0
 	get_node("Sprite").set_frame(frame)
 	
-func die(area):
+func die(area):	
 	get_node("SFX").play("alien_explosion")
 	var game = get_parent().get_parent().get_parent()
 	var score = self.attributes[type].score
