@@ -40,7 +40,7 @@ points = Vector2Array( -6.49463, 0.00288534, -6.49463, -1.07288, -1.58039, -1.07
 custom_solver_bias = 0.0
 points = Vector2Array( 0.567839, -3.06122, -0.541011, -3.0571, -0.511837, -4.0311, 0.549539, -4.0494 )
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 
 resource/name = "default"
 length = 1.0
@@ -52,9 +52,8 @@ tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ 0 ] }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 
-resource/name = "explode"
 length = 1.0
 loop = false
 step = 0.1
@@ -118,8 +117,8 @@ trigger = false
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/default = SubResource( 9 )
-anims/explode = SubResource( 8 )
+anims/default = SubResource( 8 )
+anims/explode = SubResource( 9 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]

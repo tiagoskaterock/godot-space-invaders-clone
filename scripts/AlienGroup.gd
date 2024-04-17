@@ -8,12 +8,14 @@ var x_constant = 1
 var maxIntervalToShoot = 5
 var moving_group = false
 var note = 1
+var player_is_dead = false
 
 func _ready():
 	for alien in get_node("Aliens").get_children():
 		alien.hide()
 	
 func shoot():
+	if player_is_dead : return
 	get_node("SFX").play("ship_shoot")
 	var total_aliens = get_node("Aliens").get_child_count()
 	if total_aliens > 0:		
@@ -23,11 +25,13 @@ func shoot():
 		get_parent().add_child(laser)
 
 func _on_TimerToShoot_timeout():
+	if player_is_dead : return
 	if moving_group:
 		get_node("TimerToShoot").set_wait_time(rand_range(.5, maxIntervalToShoot))
 		shoot()
 
 func _on_TimerToMove_timeout():	
+	if player_is_dead : return
 	var total_aliens = get_node("Aliens").get_child_count()	
 	var wait_time = get_parent().get_node("TimerToMove").get_wait_time()
 	
@@ -61,9 +65,11 @@ func _on_TimerToMove_timeout():
 	moveGroup()
 	
 func accel_aliens(wait_time):
+	if player_is_dead : return
 	get_parent().get_node("TimerToMove").set_wait_time(wait_time)	
 
 func moveGroup():
+	if player_is_dead : return
 	# var total_aliens = get_node("Aliens").get_child_count()
 	
 	# after the intro 
@@ -91,6 +97,7 @@ func moveGroup():
 		moving_group = true      
 
 func playSFXmove():
+	if player_is_dead : return
 	var total_aliens = get_node("Aliens").get_child_count()
 	if total_aliens > 0:
 		get_node("SFX").play(str(note))

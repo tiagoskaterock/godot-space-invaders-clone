@@ -1,6 +1,7 @@
 tool
 extends Area2D
 var frame = 0
+var is_shoot = false
 var pre_alien_explosion = preload('res://scenes/AlienExplosion.tscn')
 
 export (int, "A", "B", "C") var type = 0 setget setType
@@ -32,7 +33,7 @@ func setType(val):
 	if is_inside_tree() and get_tree().is_editor_hint():
 		update()
 
-func _on_Enemy_area_enter( area ):
+func _on_Enemy_area_enter( area ):	
 	if area.is_shoot:
 		# remove o colisor 2D quando atingido		
 		get_node("CollisionShape2D").queue_free()
@@ -54,3 +55,5 @@ func die(area):
 	var transparente = Color(1,1,1,0)
 	get_node("Sprite").modulate = transparente
 	add_child(alien_explosion)
+	
+func is_enemy() : return true

@@ -7,13 +7,14 @@ var prev_laser = false
 const is_player = true
 var lives = 3
 var exploding = false
-var infinite_shoot = true #for testing purposes
+var infinite_shoot = false #for testing purposes
 
 func _ready():
 	get_node("Animation").play("default")
 	set_process(true)
 	
 func _process(delta):
+	if lives < 1: return
 	# check to see if all aliens are shown before the Ship can shoot
 	var moving_group = get_parent().get_node("AlienGroup").moving_group
 	if(moving_group):

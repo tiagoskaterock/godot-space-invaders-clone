@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=1]
+
+[ext_resource path="res://scripts/game.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Ship.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/AlienGroup.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Shield.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/LifesGroup.tscn" type="PackedScene" id=6]
+
+[node name="Test" type="Node"]
+
+script/script = ExtResource( 1 )
+
+[node name="Ship" parent="." instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 90, 288 )
+
+[node name="AlienGroup" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 8, 224 )
+
+[node name="TimerToMove" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = true
+
+[node name="Shield" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 152, 272 )
+
+[node name="Shield1" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 22, 272 )
+
+[node name="Shield2" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 62, 272 )
+
+[node name="Shield3" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 112, 272 )
+
+[node name="HUD" parent="." instance=ExtResource( 5 )]
+
+[node name="TimerToMotherShip" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 3.0
+one_shot = true
+autostart = false
+
+[node name="LifesGroup" parent="." instance=ExtResource( 6 )]
+
+[connection signal="timeout" from="TimerToMove" to="AlienGroup" method="_on_TimerToMove_timeout"]
+
+[connection signal="timeout" from="TimerToMotherShip" to="." method="_on_TimerToMotherShip_timeout"]
+
+

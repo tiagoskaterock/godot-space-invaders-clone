@@ -6,17 +6,24 @@ const is_shoot = true
 const _score = 500
 const SPEED = 50
 const pre_alien_explosion = preload("res://scenes/AlienExplosion.tscn")
+var player_lives
 
-func _ready():
+func _ready():		
 	get_node("CollisionPolygon2D").queue_free()
 	get_node("SFX").play("sfx");
 	set_process(true)
 
-func _process(delta):	
-	if get_pos().x < -20:
-		queue_free()		
-		restart()
-	move(delta)
+func _process(delta):
+	player_lives = get_parent().get_node("Ship").lives
+	if player_lives < 1 :
+		var som = get_node("SFX")
+		print(som.stop_all())
+		#som.stop();
+	else: 
+		if get_pos().x < -20:
+			queue_free()		
+			restart()
+		move(delta)
 	
 func restart():
 	var game = get_parent()

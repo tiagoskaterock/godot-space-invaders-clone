@@ -2,8 +2,8 @@ extends Node
 
 var _score = 0
 const preMotherShip = preload("res://scenes/MotherShip.tscn")
-const maxToRespawnMothership = 30
-const minToRespanMothership = 20
+const maxToRespawnMothership = 20
+const minToRespanMothership = 10
 
 func _process(delta):
 	var lives = get_node("Ship").getLives()
