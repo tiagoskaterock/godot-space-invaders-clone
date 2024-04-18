@@ -148,6 +148,8 @@ default/reverb_room = 2
 default/reverb_send = 0.0
 default/chorus_send = 0.0
 
+[connection signal="area_enter" from="." to="." method="_on_Ship_area_enter"]
+
 [connection signal="timeout" from="TimerExploding" to="." method="_on_TimerExploding_timeout"]
 
 

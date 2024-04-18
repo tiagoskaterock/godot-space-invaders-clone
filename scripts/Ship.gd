@@ -5,6 +5,7 @@ const SPEED = 100
 var prev_shoot = preload("res://scenes/Shoot.tscn")
 var prev_laser = false
 const is_player = true
+const is_shoot = false
 var lives = 3
 var exploding = false
 var infinite_shoot = false #for testing purposes
@@ -13,7 +14,7 @@ func _ready():
 	get_node("Animation").play("default")
 	set_process(true)
 	
-func _process(delta):
+func _process(delta):	
 	if lives < 1: return
 	# check to see if all aliens are shown before the Ship can shoot
 	var moving_group = get_parent().get_node("AlienGroup").moving_group
@@ -70,3 +71,13 @@ func setLives(newLives):
 func _on_TimerExploding_timeout():
 	exploding = false
 	get_node("Animation").play("default")
+
+func _on_Ship_area_enter( area ):
+	if area.has_method('is_enemy'):
+		explode()
+		setLives(0)
+		get_parent().get_node("AlienGroup").moving_group = false
+		
+		
+	
+func is_ship(): return true

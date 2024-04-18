@@ -4,7 +4,8 @@ var pre_alien_laser = preload('res://scenes/AlienLaser.tscn')
 var dir = -1
 var y_speed = 3
 var x_speed = 5 #pixels
-var x_constant = 1
+var x_constant = 1 #real
+
 var maxIntervalToShoot = 5
 var moving_group = false
 var note = 1
@@ -15,6 +16,8 @@ func _ready():
 		alien.hide()
 	
 func shoot():
+	var lives = get_parent().get_node("Ship").getLives()
+	if lives == 0: player_is_dead = true
 	if player_is_dead : return
 	get_node("SFX").play("ship_shoot")
 	var total_aliens = get_node("Aliens").get_child_count()
@@ -66,13 +69,13 @@ func _on_TimerToMove_timeout():
 	
 func accel_aliens(wait_time):
 	if player_is_dead : return
-	get_parent().get_node("TimerToMove").set_wait_time(wait_time)	
+	get_parent().get_node("TimerToMove").set_wait_time(wait_time)
 
 func moveGroup():
 	if player_is_dead : return
 	# var total_aliens = get_node("Aliens").get_child_count()
 	
-	# after the intro 
+	# after the intro
 	if moving_group:
 		
 		playSFXmove()
@@ -80,7 +83,7 @@ func moveGroup():
 		for alien in get_node("Aliens").get_children():
 			# alien.hide()
 			alien.nextFrame()
-			if alien.get_global_pos().x > 170:			
+			if alien.get_global_pos().x > 170:
 				translate(Vector2(0, y_speed))
 				dir = -1
 			elif alien.get_global_pos().x < 12:
@@ -89,7 +92,7 @@ func moveGroup():
 		translate(Vector2(x_speed * dir, 0))
 	
 	# start when the group is not moving but showing aliens,  1 by 1
-	if ! moving_group:
+	if ! moving_group and ! player_is_dead:
 		for alien in get_node("Aliens").get_children():
 			get_node("TimerPause").start()
 			yield(get_node("TimerPause"), "timeout")
