@@ -4,17 +4,19 @@ var _score = 0
 const preMotherShip = preload("res://scenes/MotherShip.tscn")
 const maxToRespawnMothership = 20
 const minToRespanMothership = 10
+var _metaDepontos = 100
 
 func _process(delta):
-	var lives = get_node("Ship").getLives()
-	
-	# check lives and delete if it's needed
-	if	lives == 2: hide_life('03')
-	elif lives == 1: hide_life('02')
-	elif lives == 0: hide_life('01')
+	checkLives()
+	if getScore() > getMetaDePontos():
+		setMetaDePontos(getMetaDePontos() * 2)
+		get_node('Ship').addLife()	
 	
 func hide_life(which_life_to_hide):
-	get_node("LifesGroup").get_node(which_life_to_hide).hide()	
+	get_node("LifesGroup").get_node(which_life_to_hide).hide()
+	
+func show_life(which_life_to_show):
+	get_node("LifesGroup").get_node(which_life_to_show).show()
 	
 func _ready():
 	set_process(true)
@@ -44,9 +46,32 @@ func setScore(newScore):
 	_score = newScore
 	updateScoreOnScreen()
 
-func getScore():
-	return _score
+func getScore(): return _score
+
+func getMetaDePontos(): return _metaDepontos
+
+func setMetaDePontos(novaMetaDePontos): _metaDepontos = novaMetaDePontos 
 
 func updateScoreOnScreen():
 	get_node("HUD").updateScore(str(getScore()))
+	
+func checkLives():
+	var lives = get_node("Ship").getLives()
+	# check lives and delete if it's needed
+	if lives == 3:
+		show_life('01')
+		show_life('02')
+		show_life('03')
+	elif lives == 2: 
+		show_life('01')
+		show_life('02')
+		hide_life('03')
+	elif lives == 1: 
+		show_life('01')
+		hide_life('02')
+		hide_life('03')
+	elif lives == 0: 
+		hide_life('01')
+		hide_life('02')
+		hide_life('03')
 	

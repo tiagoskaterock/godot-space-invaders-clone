@@ -6,6 +6,7 @@ var prev_shoot = preload("res://scenes/Shoot.tscn")
 var prev_laser = false
 const is_player = true
 const is_shoot = false
+const MAX_LIVES = 3
 var lives = 3
 var exploding = false
 var infinite_shoot = false #for testing purposes
@@ -15,6 +16,7 @@ func _ready():
 	set_process(true)
 	
 func _process(delta):	
+	print(getLives())
 	if lives < 1: return
 	# check to see if all aliens are shown before the Ship can shoot
 	var moving_group = get_parent().get_node("AlienGroup").moving_group
@@ -59,14 +61,22 @@ func explode():
 	
 func loseLife():
 	setLives(getLives() - 1)
-	var hud = get_parent().get_node("HUD")
-	hud.updateLives(getLives())
+
+func updateLives(): 
+	print('updateLives()')
+	get_parent().get_node("HUD").updateLives(getLives())
 	
-func getLives():
-	return lives
+func getLives(): return lives
 
 func setLives(newLives):
-	lives = newLives
+	if newLives <= MAX_LIVES: 
+		lives = newLives
+		updateLives()
+	
+func addLife():
+	if getLives() < MAX_LIVES:
+		get_node("SFX").play("add_life")
+		setLives(getLives() + 1)
 	
 func _on_TimerExploding_timeout():
 	exploding = false
